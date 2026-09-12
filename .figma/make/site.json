@@ -1,0 +1,10 @@
+{
+  "description": "Explore a delightful collection of fruity dessert recipes in a vibrant, user-friendly interface designed for dessert lovers and culinary enthusiasts.",
+  "robots": {
+    "index": false
+  },
+  "accessibility": {
+    "addBypassLinks": false,
+    "ignoreReducedMotion": false
+  }
+}

@@ -1,0 +1,19 @@
+# Dev image — runs the Vite dev server with hot module reload.
+# Intended to be used with a bind-mount of the source code (see docker-compose.dev.yml
+# or the `docker run -v` example below), so edits on your host show up instantly.
+FROM node:20-alpine
+
+WORKDIR /app
+
+RUN corepack enable && corepack prepare pnpm@latest --activate
+
+# Install deps first so this layer is cached when only source files change.
+COPY package.json pnpm-lock.yaml ./
+RUN pnpm install --frozen-lockfile
+
+COPY . .
+
+ENV PORT=8443
+EXPOSE 8443
+
+CMD ["pnpm", "run", "dev"]

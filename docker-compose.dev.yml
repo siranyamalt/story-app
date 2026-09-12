@@ -1,0 +1,12 @@
+services:
+  novel-planner-dev:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - "8443:8443"
+    volumes:
+      - .:/app
+      - /app/node_modules   # keep container's own node_modules, don't overwrite from host
+    environment:
+      - PORT=8443
